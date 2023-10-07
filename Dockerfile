@@ -10,8 +10,8 @@
 FROM node:14-alpine as build-stage
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
-COPY src/package.json src/package-lock.json .
+COPY package*.json ./
 RUN npm install
-COPY src/ .
+COPY . .
 EXPOSE 8082
 CMD [ "npm", "start"]
