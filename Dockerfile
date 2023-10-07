@@ -1,17 +1,7 @@
-# FROM node:14-alpine as build-stage
-# WORKDIR /app
-# COPY package*.json ./
-# RUN npm cache clean --force
-# RUN npm install --force
-# COPY . .
-# CMD ["node", "index.js"]
-
-
 FROM node:14-alpine as build-stage
-RUN mkdir -p /opt/app
-WORKDIR /opt/app
+WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm cache clean --force
+RUN npm install --force
 COPY . .
-EXPOSE 8082
-CMD [ "npm", "start"]
+CMD ["npm", "start"]
