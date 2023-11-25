@@ -72,8 +72,7 @@ class Routes{
                     const shop = this.shops[i]
                     if (shop.shopId === data.shopId) {
                         const payload = {
-                            ...data,
-                            message: `Ada pesanan baru (${data.orderId})`
+                            ...data
                         }
                         socket.broadcast.to(shop.socketId).emit('notification', payload)
                     }                    
